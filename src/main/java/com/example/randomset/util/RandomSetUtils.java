@@ -60,8 +60,6 @@ public class RandomSetUtils {
         int[] arrm = new int[m];
         int k = 0;
         int j = 0;
-//        int i = ThreadLocalRandom.current().nextInt(n) + 1;
-//        arrm[k]=i;
         while (j<m){
             int i = ThreadLocalRandom.current().nextInt(n) + 1;
             k = i % m;
