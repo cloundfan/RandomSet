@@ -1,7 +1,6 @@
 package com.example.randomset.util;
 
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -13,95 +12,87 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class RandomSetUtils {
     /**
+     * 随机set1
      * 使用Set集合实现生成不重复随机数
      *
-     * @param n 随机数取值范围
-     * @param m 生成不重复随机数个数
+     * @param randomRange 随机范围
+     * @param randomCount 随机个数
      * @return {@link Set}<{@link Integer}>
      */
-    public static Set<Integer> randomSet1(int n, int m){
-        Set<Integer> set = new HashSet<Integer>();
-        while(set.size()<m){
-            set.add(ThreadLocalRandom.current().nextInt(n) + 1);
+    public static Set<Integer> randomSet1(int randomRange, int randomCount){
+        Set<Integer> randomCountsSet = new HashSet<Integer>();
+        while(randomCountsSet.size() < randomCount){
+            randomCountsSet.add(ThreadLocalRandom.current().nextInt(randomCount) + 1);
         }
-        return set;
+        return randomCountsSet;
     }
 
 
     /**
      * 使用byte数组实现生成不重复随机数
      *
-     * @param n 随机数取值范围
-     * @param m 生成不重复随机数个数
+     * @param randomRange 随机数取值范围
+     * @param randomCount 生成不重复随机数个数
      * @return {@link int[]}
      */
-    public static int[] randomSet2(int n, int m){
-        byte[] arrn = new byte[n];
-        int[] arrm = new int[m];
-        int j = 0;
-        while(j<m){
-            int i = ThreadLocalRandom.current().nextInt(n);
-            if (arrn[i] == 0){
-                arrn[i] = 1;
-                arrm[j++] = i+1;
+    public static int[] randomSet2(int randomRange, int randomCount){
+        byte[] randomRangeArr = new byte[randomRange];
+        int[] randomCountArr = new int[randomCount];
+        int randomCountIndex = 0;
+        while(randomCountIndex < randomCount){
+            int randomNum = ThreadLocalRandom.current().nextInt(randomRange);
+            if (randomRangeArr[randomNum] == 0){
+                randomRangeArr[randomNum] = 1;
+                randomCountArr[randomCountIndex++] = randomNum + 1;
             }
         }
-        return arrm;
+        return randomCountArr;
     }
 
 
     /**
      * 使用类似开放寻址方式生成不重复随机数实现3
      *
-     * @param n 随机数取值范围
-     * @param m 生成不重复随机数个数
+     * @param randomRange 随机数取值范围 随机数取余数
+     * @param randomCount 生成不重复随机数个数
      * @return {@link int[]}
      */
-    public static int[] randomSet3(int n, int m){
-        int[] arrm = new int[m];
-        int k = 0;
-        int j = 0;
-        while (j<m){
-            int i = ThreadLocalRandom.current().nextInt(n) + 1;
-            k = i % m;
-            while(arrm[k]!=0 && arrm[k]!=i){
-                k=++k%m;
+    public static int[] randomSet3(int randomRange, int randomCount){
+        int[] randomCountArr = new int[randomCount];
+        int randomCountIndex = 0;
+        while (randomCountIndex < randomCount){
+            int randomNum = ThreadLocalRandom.current().nextInt(randomRange) + 1;
+            int randomModulo = randomNum % randomCount;
+            while(randomCountArr[randomModulo] != 0 && randomCountArr[randomModulo] != randomNum){
+                randomModulo = ++randomModulo % randomCount;
             }
-            arrm[k]=i;
-            j++;
+            randomCountArr[randomModulo] = randomNum;
+            randomCountIndex++;
         }
-        return arrm;
+        return randomCountArr;
     }
 
 
     /**
      * 使用交换数组位置的方法生成不重复随机数实现4
      *
-     * @param n 随机数取值范围
-     * @param m 生成不重复随机数个数
+     * @param randomRange 随机数取值范围
+     * @param randomCount 生成不重复随机数个数
      * @return {@link int[]}
      */
-    public static int[] randomSet4(int n, int m) {
-        int[] readBall = new int[n];//红球号码池
-        int[] userReadBall = new int[m];//用户选择的红球号码
-        //为红球号码池赋值
-        Random r= new Random();
-        int index = -1;
-        for(int i=0;i<userReadBall.length;i++) {
-            index = r.nextInt(readBall.length-i);
-            if(readBall[index] == 0){
-                userReadBall[i] = index + 1;
-//                int temp = index + 1;
-                readBall[index] = readBall.length-i;
-//                readBall[readBall.length-i-1] = index + 1;
+    public static int[] randomSet4(int randomRange, int randomCount) {
+        int[] randomRangeArr = new int[randomRange];
+        int[] randomCountArr = new int[randomCount];
+        for(int i = 0; i < randomCountArr.length; i++) {
+            int randomNum = ThreadLocalRandom.current().nextInt(randomRangeArr.length - i);
+            if(randomRangeArr[randomNum] == 0){
+                randomCountArr[i] = randomNum + 1;
+                randomRangeArr[randomNum] = randomRangeArr.length - i;
             } else {
-                userReadBall[i] = readBall[index];
-//                int temp = readBall[index];
-                readBall[index] = readBall.length-i;
-//                readBall[readBall.length-i-1] = temp;
+                randomCountArr[i] = randomRangeArr[randomNum];
+                randomRangeArr[randomNum] = randomRangeArr.length - i;
             }
-
         }
-        return userReadBall;
+        return randomCountArr;
     }
 }
