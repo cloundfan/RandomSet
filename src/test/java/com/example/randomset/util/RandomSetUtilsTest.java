@@ -40,6 +40,9 @@ class RandomSetUtilsTest {
         LOGGER.debug(Arrays.toString(RandomSetUtils.randomSet3(33, 6)));
     }
 
+    /**
+     * 使用交换数组位置的方法生成不重复随机数实现4
+     */
     @Test
     void randomSet4() {
         LOGGER.debug(Arrays.toString(RandomSetUtils.randomSet4(33, 6)));
