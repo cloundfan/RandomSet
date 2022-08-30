@@ -33,7 +33,7 @@ class RandomSetUtilsTest {
     }
 
     /**
-     * 使用类似开放寻址方式生成不重复随机数实现3
+     * 使用类似开放寻址方式生成不重复随机数
      */
     @Test
     void randomSet3() {
@@ -41,7 +41,7 @@ class RandomSetUtilsTest {
     }
 
     /**
-     * 使用交换数组位置的方法生成不重复随机数实现4
+     * 使用交换数组位置的方法生成不重复随机数
      */
     @Test
     void randomSet4() {
