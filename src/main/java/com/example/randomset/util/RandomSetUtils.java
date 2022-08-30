@@ -12,11 +12,10 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class RandomSetUtils {
     /**
-     * 随机set1
      * 使用Set集合实现生成不重复随机数
      *
-     * @param randomRange 随机范围
-     * @param randomCount 随机个数
+     * @param randomRange 随机数范围
+     * @param randomCount 随机数个数
      * @return {@link Set}<{@link Integer}>
      */
     public static Set<Integer> randomSet1(int randomRange, int randomCount){
@@ -31,8 +30,8 @@ public class RandomSetUtils {
     /**
      * 使用byte数组实现生成不重复随机数
      *
-     * @param randomRange 随机数取值范围
-     * @param randomCount 生成不重复随机数个数
+     * @param randomRange 随机数范围
+     * @param randomCount 随机数个数
      * @return {@link int[]}
      */
     public static int[] randomSet2(int randomRange, int randomCount){
@@ -53,8 +52,8 @@ public class RandomSetUtils {
     /**
      * 使用类似开放寻址方式生成不重复随机数实现3
      *
-     * @param randomRange 随机数取值范围 随机数取余数
-     * @param randomCount 生成不重复随机数个数
+     * @param randomRange 随机数范围
+     * @param randomCount 随机数个数
      * @return {@link int[]}
      */
     public static int[] randomSet3(int randomRange, int randomCount){
@@ -76,8 +75,8 @@ public class RandomSetUtils {
     /**
      * 使用交换数组位置的方法生成不重复随机数实现4
      *
-     * @param randomRange 随机数取值范围
-     * @param randomCount 生成不重复随机数个数
+     * @param randomRange 随机数范围
+     * @param randomCount 随机数个数
      * @return {@link int[]}
      */
     public static int[] randomSet4(int randomRange, int randomCount) {
