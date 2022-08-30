@@ -13,15 +13,15 @@ import static org.slf4j.LoggerFactory.getLogger;
  * @author FZH
  * @date 2022/08/30
  */
-class RandomSetUtilsWithBigDataTest {
-    private static final Logger LOGGER = getLogger(RandomSetUtilsWithBigDataTest.class);
+class RandomSetUtilsTest {
+    private static final Logger LOGGER = getLogger(RandomSetUtilsTest.class);
 
     /**
      * 使用Set集合实现生成不重复随机数
      */
     @Test
     void randomSet1() {
-        LOGGER.debug(RandomSetUtils.randomSet1(100000000, 6).toString());
+        LOGGER.debug(RandomSetUtils.randomSet1(33, 6).toString());
     }
 
     /**
@@ -29,7 +29,7 @@ class RandomSetUtilsWithBigDataTest {
      */
     @Test
     void randomSet2() {
-        LOGGER.debug(Arrays.toString(RandomSetUtils.randomSet2(100000000, 6)));
+        LOGGER.debug(Arrays.toString(RandomSetUtils.randomSet2(33, 6)));
     }
 
     /**
@@ -37,11 +37,11 @@ class RandomSetUtilsWithBigDataTest {
      */
     @Test
     void randomSet3() {
-        LOGGER.debug(Arrays.toString(RandomSetUtils.randomSet3(100000000, 6)));
+        LOGGER.debug(Arrays.toString(RandomSetUtils.randomSet3(33, 6)));
     }
 
     @Test
     void randomSet4() {
-        LOGGER.debug(Arrays.toString(RandomSetUtils.randomSet4(100000000, 6)));
+        LOGGER.debug(Arrays.toString(RandomSetUtils.randomSet4(33, 6)));
     }
 }
